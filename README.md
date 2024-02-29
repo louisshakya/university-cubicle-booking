@@ -1,1 +1,1 @@
-"# university-cubicle-booking" 
+# university-cubicle-booking
