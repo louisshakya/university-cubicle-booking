@@ -11,8 +11,8 @@ function App() {
       <main
         className={
           isSelected
-            ? "dark text-foreground bg-background h-[100dvh]"
-            : "light text-foreground bg-background h-[100dvh]"
+            ? "dark text-foreground bg-background fixed"
+            : "light text-foreground bg-background fixed"
         }
       >
         <Header isSelected={isSelected} setIsSelected={setIsSelected} />
