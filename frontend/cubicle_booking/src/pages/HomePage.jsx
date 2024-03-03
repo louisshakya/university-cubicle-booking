@@ -1,8 +1,14 @@
-import React from "react";
-import { Button } from "@nextui-org/react";
+import React, { useState } from "react";
+import { Button, useDisclosure } from "@nextui-org/react";
 import { BookMark } from "../components/BookMark";
 import LoginModal from "../components/LoginModal";
 const HomePage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleIsModalOpen = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
       <div className="h-screen flex flex-col justify-center p-24 space-y-5">
@@ -20,6 +26,7 @@ const HomePage = () => {
         </p>
 
         <Button
+          onPress={handleIsModalOpen}
           className="max-w-72 text-xl text-center bg-gradient-to-r to-emerald-600 from-sky-400"
           radius="lg"
           size="lg"
@@ -27,7 +34,7 @@ const HomePage = () => {
         >
           Book Your Space
         </Button>
-        <LoginModal />
+        <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </>
   );

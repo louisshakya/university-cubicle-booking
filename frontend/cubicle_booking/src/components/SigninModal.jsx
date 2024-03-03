@@ -14,8 +14,7 @@ import { MailIcon } from "./MailIcon.jsx";
 import { LockIcon } from "./LockIcon.jsx";
 import { useState } from "react";
 
-const SigninModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const SigninModal = ({ isOpen, setIsOpen }) => {
   const [backdrop, setBackdrop] = useState("blur");
 
   return (
@@ -23,14 +22,16 @@ const SigninModal = () => {
       <Modal
         className="bg-gray-300"
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={() => setIsOpen(false)}
         backdrop={backdrop}
         placement="top-center"
+        isDismissable={false}
+        isKeyboardDismissDisabled={true}
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Sign Up</ModalHeader>
               <ModalBody>
                 <Input
                   autoFocus
@@ -55,7 +56,7 @@ const SigninModal = () => {
                     color="primary"
                     href="#"
                     size="sm"
-                    classNames={{
+                    className={{
                       label: "text-small",
                     }}
                   >
@@ -67,10 +68,14 @@ const SigninModal = () => {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
+                <Button
+                  color="danger"
+                  variant="flat"
+                  onPress={() => setIsOpen(false)}
+                >
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={() => setIsOpen(false)}>
                   Sign in
                 </Button>
               </ModalFooter>
@@ -82,4 +87,4 @@ const SigninModal = () => {
   );
 };
 
-export default LoginModal;
+export default SigninModal;
